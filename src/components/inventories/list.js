@@ -77,12 +77,15 @@ const ListInventory = () => {
                                 <td className={TdStyle.TdStyle2}>{item.name}</td>
                                 <td className={TdStyle.TdStyle}>{item.description}</td>
                                 <td className={TdStyle.TdStyle2}>
-                                    <a href={`/inventory/edit/${item.id}`} className="inline-block px-6 py-2.5 border rounded-md border-primary text-primary hover:bg-primary hover:text-white font-medium mx-2">
+                                    <a href={`/inventory/edit/${item.id}`} className="inline-block px-2 py-2 border rounded-md border-primary text-primary hover:bg-primary hover:text-white font-small mx-1">
                                         Edit
                                     </a>
-                                    <button onClick={() => deleteInventory(item.id)} className="inline-block px-6 py-2.5 border rounded-md border-red text-red hover:bg-red hover:text-white font-medium mx-2">
+                                    <button onClick={() => deleteInventory(item.id)} className="inline-block px-2 py-2 border rounded-md border-red text-red hover:bg-red hover:text-white font-small mx-1">
                                         Delete
                                     </button>
+                                    <a href={`/inventory/add-item/${item.id}`} className="inline-block px-2 py-2 border rounded-md border-blue text-blue hover:bg-blue hover:text-white font-small ">
+                                        +Item
+                                    </a>
                                 </td>
                             </tr>
                         ))}                    

@@ -7,6 +7,8 @@ import Home from "../components/Home";
 import ListInventory from "../components/inventories/list";
 import AddInventory from "../components/inventories/create";
 import EditInventory from "../components/inventories/edit";
+import AddItem from "../components/items/create";
+import Error from "../components/error";
 
 const router = createBrowserRouter([
     {
@@ -38,8 +40,12 @@ const router = createBrowserRouter([
                 element: <EditInventory />,
             },
             {
+                path: 'inventory/add-item/:inventory_id',
+                element: <AddItem/>
+            },
+            {
                 path: '*',
-                element: <h1>Nothing is found </h1>,
+                element: <Error/>,
             }
         ]
     }
