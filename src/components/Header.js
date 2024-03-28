@@ -46,8 +46,8 @@ const Navbar = () => {
       <div className="container">
         <div className="relative -mx-4 flex items-center justify-between">
           <div className="w-60 max-w-full px-4">
-            <a href="/#" className="block w-full py-5">
-              ClickPack
+            <a href="/" className="block w-full px-10 py-5">
+              <h2 className="uppercase">ClickPack</h2>
             </a>
           </div>
           <div className="flex w-full items-center justify-between px-4">
@@ -71,8 +71,7 @@ const Navbar = () => {
               >
                 <ul className="block lg:flex">
                   <ListItem NavLink="/">Home</ListItem>
-                  <ListItem NavLink="/#">Inventory Management</ListItem>
-               
+                  <ListItem NavLink="/inventories">Inventory Management</ListItem>               
                 </ul>
               </nav>
             </div>

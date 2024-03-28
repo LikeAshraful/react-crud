@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axiosInstance from './axiosInstance';
+import { toast } from 'react-toastify';
+
 
 const RegistrationForm = () => {
   const [formData, setFormData] = useState({
@@ -17,11 +19,18 @@ const RegistrationForm = () => {
     try {
       const response = await axiosInstance.post('/register', formData);
       console.log('Registration successful:', response.data);
+      toast("Successfully Registered");      
       window.location.href = '/login';
-
     } catch (error) {
-
-      console.error('Registration failed:', error.response.data);      
+      console.log(error.response.data);
+      const errors = error.response.data;
+      let errorMessages = [];
+      for (const key in errors) {
+        errorMessages = errorMessages.concat(errors[key]);
+      }
+      errorMessages.forEach(errorMessage => {
+        toast.error(errorMessage);
+      });
       
     }
   };
@@ -69,7 +78,7 @@ const RegistrationForm = () => {
                   <input
                     type="submit"
                     value="Sign Up"
-                    className="w-full cursor-pointer rounded-md border border-primary bg-primary  px-5 py-3 text-base font-medium text-primary transition hover:bg-opacity-90"
+                    className="w-full cursor-pointer rounded-md border border-primary bg-primary  px-5 py-3 text-base font-medium text-white transition hover:bg-opacity-90"
                   />
                 </div>          
               </form>

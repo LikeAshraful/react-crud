@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axiosInstance from './axiosInstance';
+import { toast } from 'react-toastify';
 
 const LoginForm = () => {
   const [formData, setFormData] = useState({
@@ -13,14 +14,18 @@ const LoginForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
     try {
         const response = await axiosInstance.post('/login', formData);
         const token = response.data.token;
         localStorage.setItem('token', token);
         console.log('Login successful:', response.data);
+        toast("Successfully Login");
         window.location.href = '/'; 
     } catch (error) {
       console.error('Login failed:', error.response.data);
+      toast.error('Login failed: ' + error.response.data.message);
+
     }
   };
 
@@ -57,7 +62,7 @@ const LoginForm = () => {
                         <input
                             type="submit"
                             value="Login"
-                            className="w-full cursor-pointer rounded-md border border-primary bg-primary  px-5 py-3 text-base font-medium text-primary transition hover:bg-opacity-90"
+                            className="w-full cursor-pointer rounded-md border border-primary bg-primary  px-5 py-3 text-base font-medium text-white transition hover:bg-opacity-90"
                         />
                         </div>
                 
