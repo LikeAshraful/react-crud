@@ -9,6 +9,8 @@ import AddInventory from "../components/inventories/create";
 import EditInventory from "../components/inventories/edit";
 import AddItem from "../components/items/create";
 import Error from "../components/error";
+import ListItem from "../components/items/list";
+import EditItem from "../components/items/edit";
 
 const router = createBrowserRouter([
     {
@@ -40,8 +42,16 @@ const router = createBrowserRouter([
                 element: <EditInventory />,
             },
             {
+                path: 'inventory/items/:inventory_id',
+                element: <ListItem/>
+            },
+            {
                 path: 'inventory/add-item/:inventory_id',
                 element: <AddItem/>
+            },
+            {
+                path: '/inventory/:inventory_id/edit-item/:item_id',
+                element: <EditItem />,
             },
             {
                 path: '*',
