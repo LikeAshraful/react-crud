@@ -83,9 +83,6 @@ const ListInventory = () => {
                                     <button onClick={() => deleteInventory(item.id)} className="inline-block px-2 py-2 border rounded-md border-red text-red hover:bg-red hover:text-white font-small mx-1">
                                         Delete
                                     </button>
-                                    <a href={`/inventory/add-item/${item.id}`} className="inline-block px-2 py-2 border rounded-md border-blue text-blue hover:bg-blue hover:text-white font-small ">
-                                        +Item
-                                    </a>
                                     <a href={`/inventory/items/${item.id}`} className="inline-block px-2 py-2 border rounded-md border-blue text-blue hover:bg-blue hover:text-white font-small ">
                                         Items
                                     </a>
