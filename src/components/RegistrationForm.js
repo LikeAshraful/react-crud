@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axiosInstance from './axiosInstance';
 import { toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
 
 
 const RegistrationForm = () => {
@@ -43,12 +44,7 @@ const RegistrationForm = () => {
           <div className="w-full px-4">
             <div className="relative mx-auto max-w-[525px] overflow-hidden rounded-lg bg-white px-10 py-16 text-center dark:bg-dark-2 sm:px-12 md:px-[60px]">
               <div className="mb-10 text-center md:mb-16">
-                <a
-                  href="/"
-                  className="mx-auto inline-block max-w-[160px] text-primary"
-                >
-                  ClickPack
-                </a>
+                <Link to="/" className="text-primary hover:underline"> ClickPack </Link>
                 <h2>User Registration</h2>
 
               </div>
@@ -84,13 +80,8 @@ const RegistrationForm = () => {
               </form>
             
               <p className="text-base text-body-color dark:text-dark-6">
-                <span className="pr-0.5">Already a member?</span>
-                <a
-                  href="/login"
-                  className="text-primary hover:underline"
-                >
-                  Sign In
-                </a>
+                <span className="pr-0.5">Already a member?</span>       
+                <Link to="/login" className="text-primary hover:underline"> Sign In </Link>
               </p>
               <div>
                 <span className="absolute right-1 top-1">

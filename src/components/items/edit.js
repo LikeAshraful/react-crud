@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import axiosInstance from '../axiosInstance';
 import { toast } from 'react-toastify';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 
 const EditItem = () => {
 
   const { inventory_id, item_id } = useParams();
+  const navigate = useNavigate();
   
   const [formData, setFormData] = useState({
     name: '',
@@ -59,8 +60,9 @@ const EditItem = () => {
           });
 
           console.log('Item updated successfully!'); 
-          toast("Item updated successfully!");          
-          window.location.href = `/inventories/items/${inventory_id}`; 
+          toast("Item updated successfully!");
+          navigate(`/inventories/items/${inventory_id}`);
+
 
       } catch (error) {
           const errors = error.response.data;

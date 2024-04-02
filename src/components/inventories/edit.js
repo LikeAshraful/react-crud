@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import axiosInstance from '../axiosInstance';
 import { toast } from 'react-toastify';
-import { useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 
 
 const EditInventory = () => {
 
+    const navigate = useNavigate();
     const { id } = useParams();
-    console.log('id', id);
 
     const [formData, setFormData] = useState({
         name: '',
@@ -41,9 +41,9 @@ const EditInventory = () => {
         e.preventDefault();
         try {
             await axiosInstance.put(`/inventories/${id}`, formData);
-            window.location.href = '/inventories'; 
             console.log('Inventory updated successfully!'); 
-            toast("Inventory updated successfully!");    
+            toast("Inventory updated successfully!");
+            navigate("/inventories"); 
         } catch (error) {
             const errors = error.response.data;
             let errorMessages = [];
@@ -67,7 +67,7 @@ const EditInventory = () => {
                         <h2>Edit Inventory</h2>
                     </div>
                     <div className="mb-10 md:mb-16">
-                        <a className='inline-block px-6 py-2.5 border rounded-md border-primary text-primary hover:bg-primary hover:text-white font-medium mx-2' href='/inventories'> Inventory List</a>
+                        <Link className='inline-block px-6 py-2.5 border rounded-md border-primary text-primary hover:bg-primary hover:text-white font-medium mx-2' to='/inventories'> Inventory List</Link>
                     </div>
               </div>
               <form onSubmit={handleSubmit}>

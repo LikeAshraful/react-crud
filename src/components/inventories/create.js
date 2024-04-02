@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import axiosInstance from '../axiosInstance';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 
 const AddInventory = () => {
+
+    const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
         name: '',
@@ -18,9 +21,9 @@ const AddInventory = () => {
         e.preventDefault();
         try {
             await axiosInstance.post('/inventories', formData);
-            window.location.href = '/inventories'; 
             console.log('Inventory added successfully!'); 
-            toast("Inventory added successfully!");    
+            toast("Inventory added successfully!");
+            navigate("/inventories"); 
         } catch (error) {
             const errors = error.response.data;
             let errorMessages = [];

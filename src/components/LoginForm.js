@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axiosInstance from './axiosInstance';
 import { toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
 
 const LoginForm = () => {
   const [formData, setFormData] = useState({
@@ -36,11 +37,10 @@ const LoginForm = () => {
         <div className="-mx-4 flex flex-wrap">
             <div className="w-full px-4">
             <div className="relative mx-auto max-w-[525px] overflow-hidden rounded-lg bg-white px-10 py-16 text-center dark:bg-dark-2 sm:px-12 md:px-[60px]">
-                <div className="mb-10 text-center md:mb-16">
-                <a
-                    href="/#"
-                    className="mx-auto inline-block max-w-[160px] text-primary"
-                > ClickPack </a>
+                <div className="mb-10 text-center md:mb-16">            
+
+                <Link to="/" className="text-primary hover:underline"> ClickPack </Link>
+                
                 <h2>Login</h2>
                 </div>
                 <form onSubmit={handleSubmit}>
@@ -69,13 +69,8 @@ const LoginForm = () => {
                 </form>
             
                 <p className="text-base text-body-color dark:text-dark-6">
-                <span className="pr-0.5">Not a member yet?</span>
-                <a
-                    href="/sign-up"
-                    className="text-primary hover:underline"
-                >
-                    Sign Up
-                </a>
+                    <span className="pr-0.5">Not a member yet?</span>               
+                    <Link to="/sign-up" className="text-primary hover:underline"> Sign Up </Link>
                 </p>
 
                 <div>

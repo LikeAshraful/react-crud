@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { checkAuth } from "../AuthService";
 import axiosInstance from "./axiosInstance";
+import { Link } from "react-router-dom";
 
 
 
@@ -46,9 +47,9 @@ const Navbar = () => {
       <div className="container">
         <div className="relative -mx-4 flex items-center justify-between">
           <div className="w-60 max-w-full px-4">
-            <a href="/" className="block w-full px-10 py-5">
+            <Link to="/" className="block w-full px-10 py-5">
               <h2 className="uppercase">ClickPack</h2>
-            </a>
+            </Link>
           </div>
           <div className="flex w-full items-center justify-between px-4">
             <div>
@@ -86,19 +87,11 @@ const Navbar = () => {
               </button>
               ) : (
                 <>
-                <a
-                href="/login"
-                className="px-7 py-3 text-base font-medium text-dark hover:text-primary dark:text-white"
-              >
-                Sign in
-              </a>
+                <Link to="/login" className="px-7 py-3 text-base font-medium text-dark hover:text-primary dark:text-white" > Sign in </Link>
+              
 
-              <a
-                href="/sign-up"
-                className="px-7 py-3 text-base font-medium text-dark hover:text-primary dark:text-white"
-              >
-                Sign Up
-              </a>
+              <Link to="/sign-up" className="px-7 py-3 text-base font-medium text-dark hover:text-primary dark:text-white"
+              > Sign Up </Link>
               </>
             )}
               
@@ -114,12 +107,9 @@ const ListItem = ({ children, NavLink }) => {
   return (
     <>
       <li>
-        <a
-          href={NavLink}
-          className="flex py-2 text-base font-medium text-dark hover:text-primary dark:text-white lg:ml-10 lg:inline-flex"
-        >
+        <Link to={NavLink} className="flex py-2 text-base font-medium text-dark hover:text-primary dark:text-white lg:ml-10 lg:inline-flex" >
           {children}
-        </a>
+        </Link>
       </li>
     </>
   );

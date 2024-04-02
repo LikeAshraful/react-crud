@@ -1,7 +1,7 @@
 
 import React, {useState, useEffect} from "react";
 import axiosInstance from "../axiosInstance";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const TdStyle = {
   TdStyle: `text-dark border-b border-l border-[#E8E8E8] bg-[#F3F6FF] dark:bg-dark-3 dark:border-dark dark:text-dark-7 py-2 px-2 text-center text-base font-medium`,
@@ -52,12 +52,12 @@ const ListItem = () => {
                 </div>
                 <div className='px-4 text-right'>
                     <div className='mb-10 md:mb-16'>                        
-                        <a href={`/inventory/add-item/${inventory_id}`} className="inline-block px-6 py-2.5 border rounded-md border-primary text-primary hover:bg-primary hover:text-white font-medium mx-2">
+                        <Link to={`/inventory/add-item/${inventory_id}`} className="inline-block px-6 py-2.5 border rounded-md border-primary text-primary hover:bg-primary hover:text-white font-medium mx-2">
                             Add New Item
-                        </a>
-                        <a href={`/inventories`} className="inline-block px-6 py-2.5 border rounded-md border-green text-green hover:bg-green hover:text-white font-medium mx-2">
+                        </Link>
+                        <Link to={`/inventories`} className="inline-block px-6 py-2.5 border rounded-md border-green text-green hover:bg-green hover:text-white font-medium mx-2">
                            Inventory List
-                        </a>             
+                        </Link>             
                     </div> 
                 </div>
             </div>
@@ -89,9 +89,9 @@ const ListItem = () => {
                                 <td className={TdStyle.TdStyle}>{item.description}</td>
                                 <td className={TdStyle.TdStyle2}>{item.quantity}</td>
                                 <td className={TdStyle.TdStyle2}>
-                                    <a href={`/inventory/${inventory_id}/edit-item/${item.id}`} className="inline-block px-2 py-2 border rounded-md border-primary text-primary hover:bg-primary hover:text-white font-small mx-1">
+                                    <Link to={`/inventory/${inventory_id}/edit-item/${item.id}`} className="inline-block px-2 py-2 border rounded-md border-primary text-primary hover:bg-primary hover:text-white font-small mx-1">
                                         Edit Item
-                                    </a>
+                                    </Link>
                                     <button onClick={() => deleteInventory(item.id)} className="inline-block px-2 py-2 border rounded-md border-red text-red hover:bg-red hover:text-white font-small mx-1">
                                         Delete Item
                                     </button>                                  

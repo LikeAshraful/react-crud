@@ -1,5 +1,5 @@
 import * as React from "react";
-import { createBrowserRouter } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layouts from "../Layouts";
 import RegistrationForm from "../components/RegistrationForm";
 import LoginForm from "../components/LoginForm";
@@ -12,53 +12,36 @@ import Error from "../components/error";
 import ListItem from "../components/items/list";
 import EditItem from "../components/items/edit";
 
-const router = createBrowserRouter([
-    {
-        path : '/',
-        element: <Layouts />,
-        children : [
-            {
-                path : '/',
-                element : <Home />
-            },   
-            {
-                path: '/sign-up',
-                element: <RegistrationForm />,
-            },
-            {
-                path: '/login',
-                element: <LoginForm />,
-            },
-            {
-                path: '/inventories',
-                element: <ListInventory />,
-            },
-            {
-                path: '/inventory/create',
-                element: <AddInventory />,
-            },
-            {
-                path: '/inventory/edit/:id',
-                element: <EditInventory />,
-            },
-            {
-                path: 'inventory/items/:inventory_id',
-                element: <ListItem/>
-            },
-            {
-                path: 'inventory/add-item/:inventory_id',
-                element: <AddItem/>
-            },
-            {
-                path: '/inventory/:inventory_id/edit-item/:item_id',
-                element: <EditItem />,
-            },
-            {
-                path: '*',
-                element: <Error/>,
-            }
-        ]
-    }
-]);
+const RouterConfig = () => {
+    const [isAuthenticated, setIsAuthenticated] = React.useState(!!localStorage.getItem('token'));
 
-export default router;
+    const handleLogin = () => {
+        setIsAuthenticated(true);
+    }
+
+    return(
+        <Router>
+        <Routes>
+            <Route path="/login" element={<LoginForm onLogin={handleLogin} />} />
+            <Route path="/sign-up" element={<RegistrationForm />} />
+            <Route path="*" element={<Error />} />
+            <Route element={<Layouts isAuthenticated={isAuthenticated} />}>
+                <Route path="/" element={<Home />} />
+                {isAuthenticated && (
+                    <>
+                    <Route path="/inventories" element={<ListInventory />} />
+                    <Route path="/inventory/create" element={<AddInventory />} />
+                    <Route path="/inventory/edit/:id" element={<EditInventory />} />
+                    <Route path="/inventory/items/:inventory_id" element={<ListItem />} />
+                    <Route path="/inventory/add-item/:inventory_id" element={<AddItem />} />
+                    <Route path="/inventory/:inventory_id/edit-item/:item_id" element={<EditItem />} />
+                    </>
+                )}
+            
+            </Route>
+        </Routes>
+        </Router>
+    );
+};
+
+export default RouterConfig;

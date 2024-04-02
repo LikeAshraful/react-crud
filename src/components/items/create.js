@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axiosInstance from '../axiosInstance';
 import { toast } from 'react-toastify';
-import { useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 
 
 const AddItem = () => {
 
     const {inventory_id} = useParams();
+    const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
         name: '',
@@ -57,11 +58,9 @@ const AddItem = () => {
                     'Content-Type': 'multipart/form-data', 
                 },
             });
-
-            window.location.href = '/inventories'; 
             console.log('Item added successfully!'); 
             toast("Item added successfully!");
-
+            navigate("/inventories");
         } catch (error) {
             const errors = error.response.data;
             let errorMessages = [];
@@ -85,7 +84,7 @@ const AddItem = () => {
                         <h2>Add New Item to {inventory.name}</h2>
                     </div>
                     <div className="mb-10 md:mb-16">
-                        <a className='inline-block px-6 py-2.5 border rounded-md border-primary text-primary hover:bg-primary hover:text-white font-medium mx-2' href='/inventories'> Inventory List</a>
+                        <Link className='inline-block px-6 py-2.5 border rounded-md border-primary text-primary hover:bg-primary hover:text-white font-medium mx-2' to='/inventories'> Inventory List</Link>
                     </div>
               </div>
               <form onSubmit={handleSubmit}>

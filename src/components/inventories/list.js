@@ -1,6 +1,7 @@
 
 import React, {useState, useEffect} from "react";
 import axiosInstance from "../axiosInstance";
+import { Link } from "react-router-dom";
 
 const TdStyle = {
   TdStyle: `text-dark border-b border-l border-[#E8E8E8] bg-[#F3F6FF] dark:bg-dark-3 dark:border-dark dark:text-dark-7 py-2 px-2 text-center text-base font-medium`,
@@ -49,9 +50,9 @@ const ListInventory = () => {
                 </div>
                 <div className='px-4 text-right'>
                     <div className='mb-10 md:mb-16'>                        
-                        <a href="/inventory/create" className="inline-block px-6 py-2.5 border rounded-md border-primary text-primary hover:bg-primary hover:text-white font-medium mx-2">
+                        <Link to="/inventory/create" className="inline-block px-6 py-2.5 border rounded-md border-primary text-primary hover:bg-primary hover:text-white font-medium mx-2">
                             Add New Inventory
-                        </a>            
+                        </Link>            
                     </div> 
                 </div>
             </div>
@@ -77,15 +78,15 @@ const ListInventory = () => {
                                 <td className={TdStyle.TdStyle2}>{item.name}</td>
                                 <td className={TdStyle.TdStyle}>{item.description}</td>
                                 <td className={TdStyle.TdStyle2}>
-                                    <a href={`/inventory/edit/${item.id}`} className="inline-block px-2 py-2 border rounded-md border-primary text-primary hover:bg-primary hover:text-white font-small mx-1">
+                                    <Link to={`/inventory/edit/${item.id}`} className="inline-block px-2 py-2 border rounded-md border-primary text-primary hover:bg-primary hover:text-white font-small mx-1">
                                         Edit
-                                    </a>
+                                    </Link>
                                     <button onClick={() => deleteInventory(item.id)} className="inline-block px-2 py-2 border rounded-md border-red text-red hover:bg-red hover:text-white font-small mx-1">
                                         Delete
                                     </button>
-                                    <a href={`/inventory/items/${item.id}`} className="inline-block px-2 py-2 border rounded-md border-blue text-blue hover:bg-blue hover:text-white font-small ">
+                                    <Link to={`/inventory/items/${item.id}`} className="inline-block px-2 py-2 border rounded-md border-blue text-blue hover:bg-blue hover:text-white font-small ">
                                         Items
-                                    </a>
+                                    </Link>
                                 </td>
                             </tr>
                         ))}                    

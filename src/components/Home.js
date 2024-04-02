@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Home = () => {
     return (
@@ -26,11 +27,11 @@ const Home = () => {
                     </a>
                   </li>
                   <li>
-                    <a
-                      href="/#"
+                    <Link
+                      to="/#"
                       className="inline-flex items-center justify-center px-5 py-3 text-center text-base font-medium text-[#464646] hover:text-primary dark:text-white"
                     >
-                    </a>
+                    </Link>
                   </li>
                 </ul>                
               </div>
