@@ -19,7 +19,7 @@ export default Hero;
 const Navbar = () => {
 
   const navigate = useNavigate();
-  
+
   const [open, setOpen] = useState(false);
   const [user, setUser] = useState(null);
 
@@ -75,8 +75,8 @@ const Navbar = () => {
                 } `}
               >
                 <ul className="block lg:flex">
-                  <ListItem NavLink="/">Home</ListItem>
-                  <ListItem NavLink="/inventories">Inventory Management</ListItem>               
+                  <ListItem NavLink="/">Home</ListItem>                
+                  {user && <ListItem NavLink="/inventories">Inventory Management</ListItem>}
                 </ul>
               </nav>
             </div>
