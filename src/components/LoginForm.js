@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import axiosInstance from './axiosInstance';
 import { toast } from 'react-toastify';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const LoginForm = () => {
+    const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -22,7 +23,7 @@ const LoginForm = () => {
         localStorage.setItem('token', token);
         console.log('Login successful:', response.data);
         toast("Successfully Login");
-        window.location.href = '/'; 
+        navigate("/");
     } catch (error) {
       console.error('Login failed:', error.response.data);
       toast.error('Login failed: ' + error.response.data.message);

@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import axiosInstance from './axiosInstance';
 import { toast } from 'react-toastify';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 const RegistrationForm = () => {
+
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -21,7 +24,7 @@ const RegistrationForm = () => {
       const response = await axiosInstance.post('/register', formData);
       console.log('Registration successful:', response.data);
       toast("Successfully Registered");      
-      window.location.href = '/login';
+      navigate('/login');
     } catch (error) {
       console.log(error.response.data);
       const errors = error.response.data;

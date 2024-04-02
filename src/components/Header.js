@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { checkAuth } from "../AuthService";
 import axiosInstance from "./axiosInstance";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 
@@ -17,6 +17,9 @@ export default Hero;
 
 
 const Navbar = () => {
+
+  const navigate = useNavigate();
+  
   const [open, setOpen] = useState(false);
   const [user, setUser] = useState(null);
 
@@ -37,6 +40,7 @@ const Navbar = () => {
     setUser(null);
     axiosInstance.post('/logout');
     localStorage.removeItem("token");
+    navigate('/login');
   };
 
 
